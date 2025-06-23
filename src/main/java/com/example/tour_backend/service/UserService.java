@@ -40,9 +40,9 @@ public class UserService {
     // 회원가입 처리
     @Transactional
     public UserResponseDto registerUser(UserRequestDto requestDto) {
-        // 아이디 중복 체크
-        if (userRepository.findByUsername(requestDto.getUsername()).isPresent()) {
-            throw new RuntimeException("이미 존재하는 아이디입니다.");
+        // 이메일 중복 체크
+        if (userRepository.findByEmail(requestDto.getEmail()).isPresent()) {
+            throw new RuntimeException("이미 존재하는 이메일입니다.");
         }
         // 닉네임 중복 체크
         if (userRepository.findByNickname(requestDto.getNickname()).isPresent()) {
